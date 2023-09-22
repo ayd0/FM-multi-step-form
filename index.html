@@ -53,24 +53,29 @@
             background-color: var(--light-gray);
         }
 
+        /* WRAPPER STYLING */
         #wrapper {
             display: grid;
             grid-template-columns: 1fr;
             width: 100%;
             height: 100%;
+            /*Following allows overlay without absolute positioning*/
             grid-template-areas:
                 "a"
+                "b"
         }
 
         #wrapper * {
             grid-area: a;
         }
+        /* END WRAPPER STYLING */
 
         #sidebar-img {
             width: 100%;
             object-fit: cover;
         }
 
+        /* NAV STYLING */
         #nav {
             margin-block-start: 5rem;
             display: flex;
@@ -87,8 +92,15 @@
             border-radius: 50%;
         }
 
+        .selected-nav {
+            background-color: var(--light-blue) !important;
+            color: var(--marine-blue) !important;
+            border: none !important;
+        }
+        /* END NAV STYLING */
+
+        /* FORM CARD STYLING */
         .form-card {
-            height: 10rem;
             background-color: #fff;
             border-radius: 1ch;
             margin-block-start: 8.5rem;
@@ -100,6 +112,72 @@
         .form-card h1 {
             margin: 0;
             padding: 0;
+            font-size: 3.25ch;
+            color: var(--marine-blue)
+        }
+
+        .form-card h3 {
+            margin: 0;
+            padding: 0;
+            font-family: Ubuntu-Regular;
+            font-size: 1.5ch;
+            color: var(--marine-blue)
+        }
+
+        .form-card p {
+            font-family: Ubuntu-Medium;
+            font-size: 2ch;
+            color: var(--cool-gray);
+        }
+
+        .form-card input {
+            margin-block-start: .5ch;
+            padding: 2ch;
+            width: 100%;
+        }
+
+        .form-card input::placeholder {
+            font-size: 2ch;
+            font-family: Ubuntu-Medium;
+            color: var(--cool-gray)
+        }
+
+        .form-card input + h3 {
+            margin-block-start: 1rem;
+        }
+        /* END FORM CARD STYLING */
+        
+        #footer {
+            grid-area: b;
+            display: flex;
+            align-items: end;
+        }
+
+        #footer div {
+            display: flex;
+            width: 100%;
+            background-color: #fff;
+            justify-content: space-between;
+            align-items: center;
+            padding-inline: 2ch;
+        }
+
+        #footer div * {
+            margin-block: 2ch;
+        }
+
+        #footer div button {
+            padding: 1ch;
+            font-family: Ubuntu-Regular;
+            font-size: 1.7ch;
+            background-color: var(--marine-blue);
+            color: #fff;
+            border: none;
+            border-radius: .5ch;
+        }
+
+        #footer div p {
+            color: var(--cool-gray)
         }
 
         @media only screen and (min-width: 551px) {
@@ -107,7 +185,8 @@
                 height: auto;
                 width: auto;
                 grid-template-areas:
-                    "a b";
+                    "a b"
+                    "a c";
                 margin-inline: 5rem;
             }
 
@@ -125,7 +204,6 @@
 
 <body>
 
-    <!-- Sidebar start -->
     <div id="wrapper">
         <picture id="cover-art">
             <source media="(max-width: 550px)" srcset="./assets/images/bg-sidebar-mobile.svg">
@@ -134,16 +212,28 @@
         </picture>
 
         <div id="nav">
-            <button>1</button>
+            <button class="selected-nav">1</button>
             <button>2</button>
             <button>3</button>
             <button>4</button>
         </div>
         <div class="form-card">
             <h1>Personal Info</h1>
+            <p>Please provide your name, email address, and phone number.</p>
+            <h3>Name</h3>
+            <input type="text" placeholder="e.g. Stephen King" class="form-input">
+            <h3>Email Address</h3>
+            <input type="email" placeholder="e.g. stephenking@lorem.com" class="form-input">
+            <h3>Phone Number</h3>
+            <input type="text" placeholder="e.g. +1 234 567 890" class="form-input">
+        </div>
+        <div id="footer">
+            <div>
+                <p>Go Back</p>
+                <button>Next Step</button> 
+            </div>
         </div>
     </div>
-    <!-- Sidebar end -->
 
 </body>
 
