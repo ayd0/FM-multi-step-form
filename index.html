@@ -14,13 +14,43 @@
 
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
+        @font-face {
+            font-family: Ubuntu-Bold;
+            src: url('./assets/fonts/Ubuntu-Bold.ttf');
+        }
+
+        @font-face {
+            font-family: Ubuntu-Medium;
+            src: url('./assets/fonts/Ubuntu-Medium.ttf');
+        }
+
+        @font-face {
+            font-family: Ubuntu-Regular;
+            src: url('./assets/fonts/Ubuntu-Regular.ttf');
+        }
+
         * {
             box-sizing: border-box;
+            font-family: Ubuntu-Bold
+        }
+
+        :root {
+            --marine-blue: hsl(213, 96%, 18%);
+            --purplish-blue: hsl(243, 100%, 62%);
+            --pastel-blue: hsl(228, 100%, 84%);
+            --light-blue: hsl(206, 94%, 87%);
+            --strawberry-red: hsl(354, 84%, 57%);
+            --cool-gray: hsl(231, 11%, 63%);
+            --light-gray: hsl(229, 24%, 87%);
+            --magnolia: hsl(217, 100%, 97%);
+            --alabaster: hsl(231, 100%, 99%);
+            --white: hsl(0, 0%, 100%);
         }
 
         body {
             margin: 0;
             height: 100vh;
+            background-color: var(--light-gray);
         }
 
         #wrapper {
@@ -43,22 +73,41 @@
 
         #nav {
             margin-block-start: 5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        #nav * {
+            margin-inline: 1ch;
+            height: 5ch;
+            width: 5ch;
+            background: none;
+            color: #fff;
+            border: 1px solid #fff;
+            border-radius: 50%;
         }
 
         .form-card {
-            width: 10rem;
             height: 10rem;
-            background-color: white;
-            border: 1px solid red;
-            margin-block-start: 8rem;
+            background-color: #fff;
+            border-radius: 1ch;
+            margin-block-start: 8.5rem;
+            margin-inline: 2rem;
+            padding-block: 2rem;
+            padding-inline: 1.5rem;
+        }
+
+        .form-card h1 {
+            margin: 0;
+            padding: 0;
         }
 
         @media only screen and (min-width: 551px) {
             #wrapper {
-                height: auto; 
+                height: auto;
                 width: auto;
                 grid-template-areas:
-                "a b";
+                    "a b";
                 margin-inline: 5rem;
             }
 
@@ -85,10 +134,13 @@
         </picture>
 
         <div id="nav">
-            <button>Testington</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
         </div>
         <div class="form-card">
-
+            <h1>Personal Info</h1>
         </div>
     </div>
     <!-- Sidebar end -->
