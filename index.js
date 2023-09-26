@@ -1,4 +1,4 @@
-const navBtns = [...document.querySelector("#nav").children];
+const navBtns = [...document.querySelectorAll(".nav-btn")];
 let selectedNav = 0;
 
 const setSelectedNav = (e) => {

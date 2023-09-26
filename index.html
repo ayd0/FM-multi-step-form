@@ -68,6 +68,7 @@
         #wrapper * {
             grid-area: a;
         }
+
         /* END WRAPPER STYLING */
 
         #sidebar-img {
@@ -82,7 +83,7 @@
             justify-content: center;
         }
 
-        #nav * {
+        .nav-btn {
             margin-inline: 1ch;
             height: 5ch;
             width: 5ch;
@@ -97,6 +98,11 @@
             color: var(--marine-blue) !important;
             border: none !important;
         }
+
+        .nav-header {
+            display: none;
+        }
+
         /* END NAV STYLING */
 
         /* FORM CARD STYLING */
@@ -133,23 +139,22 @@
 
         .form-card input {
             margin-block-start: .5ch;
-            padding: 2ch;
+            padding-inline: 2ch;
+            padding-block: 1.5ch;
             width: 100%;
             border: 1px solid var(--light-gray);
             border-radius: .5ch;
-        }
-
-        .form-card input::placeholder {
             font-size: 2ch;
             font-family: Ubuntu-Medium;
-            color: var(--cool-gray)
+            color: var(--cool-gray);
         }
 
-        .form-card input + h3 {
+        .form-card input+h3 {
             margin-block-start: 1rem;
         }
+
         /* END FORM CARD STYLING */
-        
+
         #footer {
             grid-area: b;
             display: flex;
@@ -186,15 +191,59 @@
         @media only screen and (min-width: 551px) {
             #wrapper {
                 height: auto;
-                width: auto;
+                max-width: 70rem;
                 grid-template-areas:
                     "a b"
                     "a c";
+
                 margin-inline: 5rem;
+                background-color: #fff;
+                border-radius: 3ch;
+                padding: 1rem;
             }
 
             #sidebar-img {
                 width: auto;
+            }
+
+            #nav {
+                flex-flow: column;
+                justify-content: start;
+                padding-block-end: 50%;
+                margin: 0;
+            }
+
+            #nav > div {
+                display: flex;
+                align-items: center;
+            }
+
+            #nav > div:first-of-type {
+                margin-block-start: 1.5rem;
+            }
+
+            .nav-btn {
+                margin-block: 1rem;
+                margin-inline-start: 2rem;
+            }
+
+            .nav-header {
+                display: block;
+                margin-inline-start: 1ch;
+            }
+
+            .nav-header > p {
+                font-family: Ubuntu-Regular;
+                color: var(--cool-gray);
+                font-size: 1.4ch;
+            }
+
+            .nav-header > h4 {
+                color: #fff;
+            }
+
+            .nav-header * {
+                margin: 0;
             }
 
             .form-card {
@@ -204,6 +253,10 @@
         }
     </style>
 </head>
+
+
+
+
 
 <body>
 
@@ -215,10 +268,34 @@
         </picture>
 
         <div id="nav">
-            <button class="selected-nav">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>4</button>
+            <div>
+                <button class="nav-btn selected-nav">1</button>
+                <div class="nav-header">
+                    <p>STEP 1</p>
+                    <h4>YOUR INFO</h4>
+                </div>
+            </div>
+            <div>
+                <button class="nav-btn">2</button>
+                <div class="nav-header">
+                    <p>STEP 2</p>
+                    <h4>SELECT PLAN</h4>
+                </div>
+            </div>
+            <div>
+                <button class="nav-btn">3</button>
+                <div class="nav-header">
+                    <p>STEP 3</p>
+                    <h4>ADD-ONS</h4>
+                </div>
+            </div>
+            <div>
+                <button class="nav-btn">4</button>
+                <div class="nav-header">
+                    <p>STEP 4</p>
+                    <h4>SUMMARY</h4>
+                </div>
+            </div>
         </div>
         <div class="form-card">
             <h1>Personal Info</h1>
@@ -233,7 +310,7 @@
         <div id="footer">
             <div>
                 <p>Go Back</p>
-                <button>Next Step</button> 
+                <button>Next Step</button>
             </div>
         </div>
     </div>
