@@ -1,14 +1,32 @@
 const navBtns = [...document.querySelectorAll(".nav-btn")];
 const formCards = [...document.querySelectorAll(".form-card")];
 const submissionCard = formCards.pop();
-const footer = document.querySelector('#footer');
+
+const subType = document.querySelector('#sub-type');
+const subDisplay = [...document.querySelectorAll('#sub-display p')];
+const yearlySubtext = [...document.querySelectorAll('.yearly-subtext')];
+
+const footer = document.querySelector("#footer");
 const nextStepBtn = document.querySelector("#footer div button");
 const prevStepBtn = document.querySelector("#footer div p");
 
 let selectedNav = 0;
 let formIsValid = true;
+let submitted = false;
+let subYearly = false;
 
-updateNextStepBtn = (target) => {
+const updateSubscription = () => {
+    subYearly = !subYearly;
+    subDisplay.forEach(sub => sub.classList.toggle('selected-sub'));
+    yearlySubtext.forEach((subtext) =>
+        subYearly
+            ? (subtext.style.display = "block")
+            : (subtext.style.display = "none")
+    );
+}
+
+
+const updateNextStepBtn = (target) => {
     if (selectedNav === formCards.length - 1 && target < selectedNav) {
         nextStepBtn.innerText = "Next Step";
     } else if (target === formCards.length - 1) {
@@ -17,14 +35,21 @@ updateNextStepBtn = (target) => {
 };
 
 const updateSelectedNav = (target) => {
-    if (selectedNav === formCards.length - 1 && selectedNav < target && formIsValid) {
-        console.log('confirmed')
-        formCards[selectedNav].style.display = "none";
-        footer.style.display = "none";
-        submissionCard.style.display = "flex";
+    if (
+        selectedNav === formCards.length - 1 &&
+        selectedNav < target &&
+        formIsValid
+    ) {
+        submitted = true;
+        setTimeout(() => {
+            formCards[selectedNav].style.display = "none";
+            footer.style.display = "none";
+            submissionCard.style.display = "flex";
+        }, 500);
     } else if (
-        (target < selectedNav && target >= 0) ||
-        (target > selectedNav && target < formCards.length)
+        submitted === false &&
+        ((target < selectedNav && target >= 0) ||
+            (target > selectedNav && target < formCards.length))
     ) {
         updateNextStepBtn(target);
         navBtns[selectedNav].classList.remove("selected-nav");
@@ -41,5 +66,6 @@ navBtns.forEach((navBtn) =>
         updateSelectedNav(parseInt(e.target.innerText) - 1)
     )
 );
+subType.addEventListener('click', () => updateSubscription());
 nextStepBtn.addEventListener("click", () => updateSelectedNav(selectedNav + 1));
 prevStepBtn.addEventListener("click", () => updateSelectedNav(selectedNav - 1));

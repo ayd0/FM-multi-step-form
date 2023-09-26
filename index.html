@@ -202,8 +202,11 @@
         }
 
         .yearly-subtext {
-            display: none;
+            font-size: 1.5ch !important;
+            margin-block-start: 1ch !important;
+            color: var(--marine-blue) !important;
         }
+
 
         #sub-switch {
             position: relative;
@@ -242,6 +245,10 @@
 
         #sub-switch input:checked+label {
             background-color: var(--purplish-blue);
+        }
+
+        .selected-sub {
+            color: var(--marine-blue) !important;
         }
 
         /* END PLAN CARD STYLING */
@@ -396,7 +403,7 @@
             color: var(--cool-gray)
         }
 
-        @media only screen and (min-width: 800px) {
+        @media only screen and (min-width: 880px) {
             body {
                 display: flex;
                 align-items: center;
@@ -487,7 +494,7 @@
                 flex-flow: column;
                 align-items: baseline;
                 padding-inline-end: 2rem;
-                min-width: 12ch;
+                min-width: 16ch;
             }
 
             .plan-btn img {
@@ -498,13 +505,6 @@
             .plan-btn+.plan-btn {
                 margin-block-start: 0;
                 margin-inline-start: 1rem;
-            }
-
-            .yearly-subtext {
-                display: block;
-                font-size: 1.5ch !important;
-                margin-block-start: 1ch !important;
-                color: var(--marine-blue) !important;
             }
 
             #footer {
@@ -524,8 +524,8 @@
 
     <div id="wrapper">
         <picture id="cover-art">
-            <source media="(max-width: 799px)" srcset="./assets/images/bg-sidebar-mobile.svg">
-            <source media="(min-width: 800px)" srcset="./assets/images/bg-sidebar-desktop.svg">
+            <source media="(max-width: 879px)" srcset="./assets/images/bg-sidebar-mobile.svg">
+            <source media="(min-width: 880px)" srcset="./assets/images/bg-sidebar-desktop.svg">
             <img id="sidebar-img" />
         </picture>
 
@@ -601,7 +601,7 @@
                 </div>
             </div>
             <div id="sub-display">
-                <p>Monthly</p>
+                <p class="selected-sub">Monthly</p>
                 <div id="sub-toggler">
                     <div id="sub-switch">
                         <input id="sub-type" type="checkbox">
@@ -671,7 +671,8 @@
         <div id="submission-card" class="form-card" style="display: none;">
             <img src="./assets/images/icon-thank-you.svg" />
             <h1>Thank you!</h1>
-            <p>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
+            <p>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need
+                support, please feel free to email us at support@loremgaming.com.</p>
         </div>
         <div id="footer">
             <div>
