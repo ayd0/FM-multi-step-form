@@ -6,6 +6,7 @@ const setSelectedNav = (e) => {
     navBtns[selectedNav].classList.remove('selected-nav');
     formCards[selectedNav].style.display = 'none';
     selectedNav = parseInt(e.target.innerText) - 1;
+
     navBtns[selectedNav].classList.add('selected-nav');
     formCards[selectedNav].style.display = 'block';
 }
