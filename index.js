@@ -4,7 +4,16 @@ const formCards = document.querySelectorAll(".form-card");
 const nextStepBtn = document.querySelector("#footer div button");
 const prevStepBtn = document.querySelector("#footer div p");
 
+updateNextStepBtn = (target) => {
+    if (selectedNav === formCards.length - 1 && target < selectedNav) {
+        nextStepBtn.innerText = 'Next Step'; 
+    } else if (target === formCards.length - 1) {
+        nextStepBtn.innerText = 'Confirm';
+    }
+}
+
 const updateSelectedNav = (target) => {
+    updateNextStepBtn(target);
     if (
         (target < selectedNav && target >= 0) ||
         (target > selectedNav && target < formCards.length)
