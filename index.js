@@ -1,23 +1,32 @@
 const navBtns = [...document.querySelectorAll(".nav-btn")];
-let selectedNav = 0;
-const formCards = document.querySelectorAll(".form-card");
+const formCards = [...document.querySelectorAll(".form-card")];
+const submissionCard = formCards.pop();
+const footer = document.querySelector('#footer');
 const nextStepBtn = document.querySelector("#footer div button");
 const prevStepBtn = document.querySelector("#footer div p");
 
+let selectedNav = 0;
+let formIsValid = true;
+
 updateNextStepBtn = (target) => {
     if (selectedNav === formCards.length - 1 && target < selectedNav) {
-        nextStepBtn.innerText = 'Next Step'; 
+        nextStepBtn.innerText = "Next Step";
     } else if (target === formCards.length - 1) {
-        nextStepBtn.innerText = 'Confirm';
+        nextStepBtn.innerText = "Confirm";
     }
-}
+};
 
 const updateSelectedNav = (target) => {
-    updateNextStepBtn(target);
-    if (
+    if (selectedNav === formCards.length - 1 && selectedNav < target && formIsValid) {
+        console.log('confirmed')
+        formCards[selectedNav].style.display = "none";
+        footer.style.display = "none";
+        submissionCard.style.display = "flex";
+    } else if (
         (target < selectedNav && target >= 0) ||
         (target > selectedNav && target < formCards.length)
     ) {
+        updateNextStepBtn(target);
         navBtns[selectedNav].classList.remove("selected-nav");
         formCards[selectedNav].style.display = "none";
         selectedNav = target;

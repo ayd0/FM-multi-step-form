@@ -291,16 +291,18 @@
             border-radius: 1ch;
         }
 
-        #services p, #service-total p {
+        #services p,
+        #service-total p {
             margin-block: 0;
             font-family: Ubuntu-Regular;
         }
 
-        #services * + * {
+        #services *+* {
             margin-block-start: 1rem;
         }
 
-        .service-listing, #service-total {
+        .service-listing,
+        #service-total {
             display: flex;
             align-items: center;
         }
@@ -311,7 +313,7 @@
             color: var(--marine-blue) !important;
         }
 
-        #final-plan + .price-tag {
+        #final-plan+.price-tag {
             font-family: Ubuntu-Bold !important;
             color: var(--marine-blue) !important;
         }
@@ -333,6 +335,26 @@
 
         #service-total {
             margin: 1rem;
+        }
+
+        /* SUBMISSION CARD */
+        #submission-card {
+            display: flex;
+            flex-flow: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        #submission-card img {
+            height: 7ch;
+            margin-block-start: 4rem;
+            margin-block-end: 2rem;
+        }
+
+        #submission-card p {
+            margin-block-end: 3rem;
+            line-height: 2.5ch;
+            font-family: Ubuntu-Regular;
         }
 
         /* END FORM CARD STYLING */
@@ -438,6 +460,15 @@
 
             .nav-header * {
                 margin: 0;
+            }
+
+            #submission-card img {
+                height: 10ch;
+                margin-block-start: 6rem;
+            }
+
+            #submission-card p {
+                max-width: 100%;
             }
 
             .form-card {
@@ -635,6 +666,12 @@
                 <p>Total (per year)</p>
                 <h2 class="price-tag">$120/yr</h2>
             </div>
+        </div>
+        <!-- SUBMISSION CARD -->
+        <div id="submission-card" class="form-card" style="display: none;">
+            <img src="./assets/images/icon-thank-you.svg" />
+            <h1>Thank you!</h1>
+            <p>Thanks for confirming your subscription! We hope you have fun using our platform. If you ever need support, please feel free to email us at support@loremgaming.com.</p>
         </div>
         <div id="footer">
             <div>
