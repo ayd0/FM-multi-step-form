@@ -201,7 +201,12 @@
             margin-inline: 1.5rem;
         }
 
+        .sub-price-val, .sub-price-del {
+            margin: 0 !important;
+        }
+
         .yearly-subtext {
+            height: 2ch;
             font-size: 1.5ch !important;
             margin-block-start: 1ch !important;
             color: var(--marine-blue) !important;
@@ -579,24 +584,24 @@
                     <img src="./assets/images/icon-arcade.svg" />
                     <div>
                         <h2>Arcade</h2>
-                        <p>$9/mo</p>
-                        <p class="yearly-subtext">2 months free</p>
+                        <p>$<span class="sub-price-val">9</span>/<span class="sub-price-del">mo</span></p>
+                        <p class="yearly-subtext"></p>
                     </div>
                 </div>
                 <div class="plan-btn">
                     <img src="./assets/images/icon-advanced.svg" />
                     <div>
                         <h2>Advanced</h2>
-                        <p>$12/mo</p>
-                        <p class="yearly-subtext">2 months free</p>
+                        <p>$<span class="sub-price-val">12</span>/<span class="sub-price-del">mo</span></p>
+                        <p class="yearly-subtext"></p>
                     </div>
                 </div>
                 <div class="plan-btn">
                     <img src="./assets/images/icon-pro.svg" />
                     <div>
                         <h2>Pro</h2>
-                        <p>$15/mo</p>
-                        <p class="yearly-subtext">2 months free</p>
+                        <p>$<span class="sub-price-val">15</span>/<span class="sub-price-del">mo</span></p>
+                        <p class="yearly-subtext"></p>
                     </div>
                 </div>
             </div>

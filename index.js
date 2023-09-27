@@ -2,9 +2,11 @@ const navBtns = [...document.querySelectorAll(".nav-btn")];
 const formCards = [...document.querySelectorAll(".form-card")];
 const submissionCard = formCards.pop();
 
-const subType = document.querySelector('#sub-type');
-const subDisplay = [...document.querySelectorAll('#sub-display p')];
-const yearlySubtext = [...document.querySelectorAll('.yearly-subtext')];
+const subType = document.querySelector("#sub-type");
+const subDisplay = [...document.querySelectorAll("#sub-display p")];
+const subPriceVals = [...document.querySelectorAll(".sub-price-val")];
+const subPriceDels = [...document.querySelectorAll(".sub-price-del")];
+const yearlySubtext = [...document.querySelectorAll(".yearly-subtext")];
 
 const footer = document.querySelector("#footer");
 const nextStepBtn = document.querySelector("#footer div button");
@@ -17,14 +19,20 @@ let subYearly = false;
 
 const updateSubscription = () => {
     subYearly = !subYearly;
-    subDisplay.forEach(sub => sub.classList.toggle('selected-sub'));
+    subDisplay.forEach((sub) => sub.classList.toggle("selected-sub"));
+    subPriceVals.forEach(
+        (price) =>
+            (price.innerText = parseInt(
+                subYearly ? price.innerText * 10 : price.innerText / 10
+            ))
+    );
+    subPriceDels.forEach((del) => (del.innerText = subYearly ? "yr" : "mo"));
     yearlySubtext.forEach((subtext) =>
         subYearly
-            ? (subtext.style.display = "block")
-            : (subtext.style.display = "none")
+            ? (subtext.innerText = "2 months free")
+            : (subtext.innerText = "")
     );
-}
-
+};
 
 const updateNextStepBtn = (target) => {
     if (selectedNav === formCards.length - 1 && target < selectedNav) {
@@ -66,6 +74,6 @@ navBtns.forEach((navBtn) =>
         updateSelectedNav(parseInt(e.target.innerText) - 1)
     )
 );
-subType.addEventListener('click', () => updateSubscription());
+subType.addEventListener("click", () => updateSubscription());
 nextStepBtn.addEventListener("click", () => updateSelectedNav(selectedNav + 1));
 prevStepBtn.addEventListener("click", () => updateSelectedNav(selectedNav - 1));
