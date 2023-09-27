@@ -241,6 +241,11 @@ body {
     color: var(--marine-blue) !important;
 }
 
+.selected-plan {
+    border: 1px solid var(--purplish-blue);
+    background-color: var(--magnolia);
+}
+
 /* END PLAN CARD STYLING */
 /* ADDONS CARD STYLING */
 .addon-btn {
@@ -279,6 +284,11 @@ body {
     font-size: 1.7ch !important;
     color: var(--purplish-blue) !important;
     opacity: 60%;
+}
+
+.selected-addon {
+    border: 1px solid var(--purplish-blue);
+    background-color: var(--magnolia);
 }
 
 /* SUMMARY CARD STYLING */

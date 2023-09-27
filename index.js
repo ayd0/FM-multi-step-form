@@ -3,6 +3,7 @@ const formCards = [...document.querySelectorAll(".form-card")];
 const submissionCard = formCards.pop();
 
 // plan card
+const planBtns = [...document.querySelectorAll('.plan-btn')];
 const subType = document.querySelector("#sub-type");
 const subDisplay = [...document.querySelectorAll("#sub-display p")];
 const subPriceVals = [...document.querySelectorAll(".sub-price-val")];
@@ -39,11 +40,29 @@ const nextStepBtn = document.querySelector("#footer div button");
 const prevStepBtn = document.querySelector("#footer div p");
 
 // local state
-let selectedNav = 0;
 let formIsValid = true;
+let selectedNav = 0;
+let selectedPlan = -1;
 let submitted = false;
 let subYearly = false;
 let totalCost = 0;
+
+const getPlanCostVal = () => {
+    return parseInt(subPriceVals[selectedPlan].innerText);
+}
+
+const setSelectedPlan = (e, i) => {
+    if (selectedPlan !== i) {
+        if (selectedPlan > -1) {
+            planBtns[selectedPlan].classList.remove("selected-plan");
+            totalCost -= getPlanCostVal();
+        }
+        selectedPlan = i;
+        planBtns[selectedPlan].classList.add("selected-plan");
+        totalCost += getPlanCostVal();
+        console.log(totalCost);
+    }
+}
 
 const getAddonCostVal = (state, override=false) => {
     let yearly = subYearly;
@@ -59,7 +78,8 @@ const setAddonCost = (e, i) => {
     e.target.checked
         ? (totalCost += getAddonCostVal(state))
         : (totalCost -= getAddonCostVal(state));
-    console.log(totalCost);
+
+    addonBtns[i].parentElement.classList.toggle('selected-addon');
 };
 
 const updateAddonSubscription = () => {
@@ -90,8 +110,12 @@ const updatePlanSubscription = () => {
 };
 
 const updateSubscription = () => {
+    totalCost -= getPlanCostVal();
     subYearly = !subYearly;
+
     updatePlanSubscription();
+    totalCost += getPlanCostVal();
+
     updateAddonSubscription();
 };
 
@@ -136,12 +160,21 @@ navBtns.forEach((navBtn) =>
         updateSelectedNav(parseInt(e.target.innerText) - 1)
     )
 );
+
 subType.addEventListener("click", () => updateSubscription());
+for (let i = 0; i < planBtns.length; ++i) {
+    let j = i;
+    planBtns[j].addEventListener("click", (e) => {
+        setSelectedPlan(e, i);
+    });
+}
+
 for (let i = 0; i < addonBtns.length; ++i) {
     let j = i;
     addonBtns[j].addEventListener("change", (e) => {
         setAddonCost(e, i);
     });
 }
+
 nextStepBtn.addEventListener("click", () => updateSelectedNav(selectedNav + 1));
 prevStepBtn.addEventListener("click", () => updateSelectedNav(selectedNav - 1));
