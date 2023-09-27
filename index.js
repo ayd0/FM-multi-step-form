@@ -93,7 +93,7 @@ const updateAddonSubscription = () => {
     }
 };
 
-const updatePlanSubscription = () => {
+const updatePlanSubscription = (prevPlanCost) => {
     subDisplay.forEach((sub) => sub.classList.toggle("selected-sub"));
     subPriceVals.forEach(
         (price) =>
@@ -107,15 +107,15 @@ const updatePlanSubscription = () => {
             ? (subtext.innerText = "2 months free")
             : (subtext.innerText = "")
     );
+
+    totalCost += getPlanCostVal() - prevPlanCost;
 };
 
 const updateSubscription = () => {
-    totalCost -= getPlanCostVal();
+    let prevPlanCost = getPlanCostVal();
     subYearly = !subYearly;
 
-    updatePlanSubscription();
-    totalCost += getPlanCostVal();
-
+    updatePlanSubscription(prevPlanCost);
     updateAddonSubscription();
 };
 
